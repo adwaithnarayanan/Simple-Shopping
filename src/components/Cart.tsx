@@ -15,12 +15,7 @@ const Cart = ({ setOpenCart, cartItems }: CartPropsType) => {
         <div className="overflow-y-scroll h-screen scroll-m-0">
           <header className="flex justify-between items-center">
             <h2 className="text-xl font-semibold py-3 px-4 uppercase">Cart</h2>
-            {/* <button
-              className="mr-3 focus:ring-1 focus:ring-primary h-fit hover:bg-[rgba(0,0,0,0.05)] p-2"
-              onClick={() => setOpenCart(false)}
-            >
-              <CloseOutlinedIcon />
-            </button> */}
+
             <Button
               btnType="closeCart"
               type="button"

@@ -17,7 +17,6 @@ const ProductsPage = ({ data }: ProductsPagePropsType) => {
   const [openCart, setOpenCart] = useState(false);
 
   const handleAddToCart = (product: CartType) => {
-    // setCartItems((prev) => [...prev, { ...product }]);
     const isPresent = cartItems.find((cartItem) => cartItem.id === product.id);
 
     if (!isPresent) setCartItems((prev) => [...prev, { ...product }]);
