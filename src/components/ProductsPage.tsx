@@ -10,6 +10,8 @@ type ProductsPagePropsType = {
   data: ProductType[] | undefined;
 };
 
+const LOCAL_STORAGE_KEY = "cartItems";
+
 const ProductsPage = ({ data }: ProductsPagePropsType) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [searchText, setSearchText] = useState("");
@@ -38,8 +40,20 @@ const ProductsPage = ({ data }: ProductsPagePropsType) => {
   }, [searchText]);
 
   useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
     if (data) setProducts([...data]);
   }, [data]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+    console.log(data);
+
+    if (data) setCartItems([...data]);
+  }, []);
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
